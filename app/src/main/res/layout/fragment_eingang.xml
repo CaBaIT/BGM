@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EingangFragment">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="5dp"
+    android:layout_marginBottom="5dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/iv_gerät"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/testbild"
+            android:src="@drawable/ruettelplatte"
+            android:visibility="invisible"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_gerätename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/geraetename"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/tv_bauleiter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bauleiter"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/tv_baustelle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Baustelle"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/bt_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/geraet_scannen" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/bt_eingang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:baselineAligned="false"
+            android:text="@string/bteingang" />
+    </LinearLayout>
+</ScrollView>

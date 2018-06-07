@@ -8,5 +8,7 @@
     <string name="bauleiter">Bauleiter</string>
     <string name="baustelle">Baustelle</string>
     <string name="geraeteausgang_bestaetigen">Geräteausgang bestätigen</string>
+    <string name="testbild">testbild</string>
+    <string name="bteingang">Geräteeingang bestätigen</string>
 
 </resources>
