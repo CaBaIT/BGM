@@ -17,14 +17,26 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.navigation_übersicht:
+                    setTitle("Baugeräte Übersicht");
+                    AusgangFragment fragment = new AusgangFragment();
+                    android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.frameLayout,fragment);
+                    ft.commit();
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_ausgang:
+                    setTitle("Baugeräte Ausgang");
+                    AusgangFragment fragment1 = new AusgangFragment();
+                    android.support.v4.app.FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+                    ft1.replace(R.id.frameLayout,fragment1);
+                    ft1.commit();
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_eingang:
+                    setTitle("Baugeräte Eingang");
+                    EingangFragment fragment2 = new EingangFragment();
+                    android.support.v4.app.FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+                    ft2.replace(R.id.frameLayout,fragment2);
+                    ft2.commit();
                     return true;
             }
             return false;
@@ -35,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
