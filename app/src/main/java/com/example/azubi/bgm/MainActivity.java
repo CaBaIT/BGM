@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnLi
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -106,4 +106,6 @@ public class AusgangFragment extends Fragment {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
 }
