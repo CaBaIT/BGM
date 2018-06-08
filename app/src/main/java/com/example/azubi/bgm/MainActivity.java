@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnLi
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_übersicht:
-                    setTitle("Baugeräte Übersicht");
+//                    setTitle("Baugeräte Übersicht");
                     ItemFragment fragment = new ItemFragment();
                     getSupportFragmentManager()
                             .beginTransaction()
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnLi
                             .commit();
                     return true;
                 case R.id.navigation_ausgang:
-                    setTitle("Baugeräte Ausgang");
+//                    setTitle("Baugeräte Ausgang");
                     AusgangFragment fragment1 = new AusgangFragment();
                     getSupportFragmentManager()
                             .beginTransaction()
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements ItemFragment.OnLi
                             .commit();
                     return true;
                 case R.id.navigation_eingang:
-                    setTitle("Baugeräte Eingang");
+//                    setTitle("Baugeräte Eingang");
                     EingangFragment fragment2 = new EingangFragment();
                     getSupportFragmentManager()
                             .beginTransaction()

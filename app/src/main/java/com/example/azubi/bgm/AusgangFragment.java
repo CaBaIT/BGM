@@ -3,6 +3,7 @@ package com.example.azubi.bgm;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,6 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 
 /**
@@ -35,7 +39,6 @@ public class AusgangFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ausgang, container, false);
         // Inflate the layout for this fragment
         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-
         et_polier =  ((EditText) view.findViewById(R.id.et_Polier));
         et_Baustelle =  ((EditText) view.findViewById(R.id.et_Baustelle));
         iv_gerät =  ((ImageView) view.findViewById(R.id.iv_gerät));
@@ -60,8 +63,10 @@ public class AusgangFragment extends Fragment {
         bt_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iv_gerät.setVisibility(View.VISIBLE);
-                tv_gerät.setVisibility(View.VISIBLE);
+//                iv_gerät.setVisibility(View.VISIBLE);
+//                tv_gerät.setVisibility(View.VISIBLE);
+                IntentIntegrator.forSupportFragment(AusgangFragment.this)
+                .initiateScan();
             }
 
         });
@@ -86,4 +91,19 @@ public class AusgangFragment extends Fragment {
             }
         }
     };
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                Toast.makeText(getActivity(), "Abgebrochen", Toast.LENGTH_LONG).show();
+            } else {
+                    iv_gerät.setVisibility(View.VISIBLE);
+                    tv_gerät.setVisibility(View.VISIBLE);
+                    tv_gerät.setText(result.getContents());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }
