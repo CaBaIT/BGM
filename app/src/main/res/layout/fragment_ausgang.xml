@@ -36,7 +36,7 @@
                 android:text="@string/geraet_scannen" />
 
             <EditText
-                android:id="@+id/et_Bauleiter"
+                android:id="@+id/et_Polier"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

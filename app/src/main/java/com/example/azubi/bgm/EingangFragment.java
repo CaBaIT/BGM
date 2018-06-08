@@ -25,7 +25,7 @@ public class EingangFragment extends Fragment {
     }
     ImageView iv_gerät;
     TextView tv_gerät;
-    TextView tv_bauleiter;
+    TextView tv_polier;
     TextView tv_baustelle;
 
     @Override
@@ -37,9 +37,9 @@ public class EingangFragment extends Fragment {
         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         iv_gerät =  ((ImageView) view.findViewById(R.id.iv_gerät));
         tv_gerät =  ((TextView) view.findViewById(R.id.tv_gerätename));
-        tv_bauleiter =  ((TextView) view.findViewById(R.id.tv_bauleiter));
+        tv_polier =  ((TextView) view.findViewById(R.id.tv_polier));
         tv_baustelle =  ((TextView) view.findViewById(R.id.tv_baustelle));
-        Button bt_eingang = (Button) view.findViewById(R.id.bt_ausgang);
+        Button bt_eingang = (Button) view.findViewById(R.id.bt_eingang);
         Button bt_scan = (Button) view.findViewById(R.id.bt_scan);
 
         bt_scan.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,7 @@ public class EingangFragment extends Fragment {
             public void onClick(View v) {
                 iv_gerät.setVisibility(View.VISIBLE);
                 tv_gerät.setVisibility(View.VISIBLE);
-                tv_bauleiter.setVisibility(View.VISIBLE);
+                tv_polier.setVisibility(View.VISIBLE);
                 tv_baustelle.setVisibility(View.VISIBLE);
             }
 
@@ -56,7 +56,7 @@ public class EingangFragment extends Fragment {
         bt_eingang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setMessage("Wollen Sie dieses Gerät wirklich herausgeben?").setPositiveButton("Ja", dialogClickListener)
+                builder.setMessage("Sind Sie sich bei dieser Rücknahme sicher?").setPositiveButton("Ja", dialogClickListener)
                         .setNegativeButton("Nein", dialogClickListener).show();
             }
 
@@ -71,8 +71,8 @@ public class EingangFragment extends Fragment {
                 case DialogInterface.BUTTON_POSITIVE:
                     iv_gerät.setVisibility(View.INVISIBLE);
                     tv_gerät.setVisibility(View.INVISIBLE);
-                    tv_bauleiter.setVisibility(View.VISIBLE);
-                    tv_baustelle.setVisibility(View.VISIBLE);
+                    tv_polier.setVisibility(View.INVISIBLE);
+                    tv_baustelle.setVisibility(View.INVISIBLE);
                     Toast.makeText(getActivity(),"Gerät erfolgreich zurückgenommen",Toast.LENGTH_LONG).show();
                     break;
 

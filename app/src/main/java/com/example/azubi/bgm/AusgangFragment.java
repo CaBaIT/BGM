@@ -25,7 +25,7 @@ public class AusgangFragment extends Fragment {
         // Required empty public constructor
     }
 
-    EditText et_Bauleiter;
+    EditText et_polier;
     EditText et_Baustelle;
     ImageView iv_gerät;
     TextView tv_gerät;
@@ -36,19 +36,24 @@ public class AusgangFragment extends Fragment {
         // Inflate the layout for this fragment
         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
-        et_Bauleiter =  ((EditText) view.findViewById(R.id.et_Bauleiter));
+        et_polier =  ((EditText) view.findViewById(R.id.et_Polier));
         et_Baustelle =  ((EditText) view.findViewById(R.id.et_Baustelle));
         iv_gerät =  ((ImageView) view.findViewById(R.id.iv_gerät));
         tv_gerät =  ((TextView) view.findViewById(R.id.tv_gerätename));
         Button bt_ausgang = (Button) view.findViewById(R.id.bt_ausgang);
         Button bt_scan = (Button) view.findViewById(R.id.bt_scan);
 
-
         bt_ausgang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setMessage("Wollen Sie dieses Gerät wirklich herausgeben?").setPositiveButton("Ja", dialogClickListener)
-                        .setNegativeButton("Nein", dialogClickListener).show();
+                if(et_polier.getText().toString().isEmpty()||et_Baustelle.getText().toString().isEmpty()){
+                    Toast.makeText(getActivity(),"Angaben Fehlerhaft",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    builder.setMessage("Wollen Sie dieses Gerät wirklich herausgeben?").setPositiveButton("Ja", dialogClickListener)
+                            .setNegativeButton("Nein", dialogClickListener).show();
+                }
+
             }
 
         });
@@ -69,7 +74,7 @@ public class AusgangFragment extends Fragment {
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
                     et_Baustelle.setText("");
-                    et_Bauleiter.setText("");
+                    et_polier.setText("");
                     iv_gerät.setVisibility(View.INVISIBLE);
                     tv_gerät.setVisibility(View.INVISIBLE);
                     Toast.makeText(getActivity(),"Gerät erfolgreich herausgegeben",Toast.LENGTH_LONG).show();

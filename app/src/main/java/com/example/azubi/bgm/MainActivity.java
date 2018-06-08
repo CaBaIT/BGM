@@ -3,13 +3,16 @@ package com.example.azubi.bgm;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.azubi.bgm.dummy.DummyContent;
 
-    private TextView mTextMessage;
+public class MainActivity extends AppCompatActivity implements ItemFragment.OnListFragmentInteractionListener {
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -19,24 +22,27 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_übersicht:
                     setTitle("Baugeräte Übersicht");
-                    AusgangFragment fragment = new AusgangFragment();
-                    android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.frameLayout,fragment);
-                    ft.commit();
+                    ItemFragment fragment = new ItemFragment();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frameLayout,fragment)
+                            .commit();
                     return true;
                 case R.id.navigation_ausgang:
                     setTitle("Baugeräte Ausgang");
                     AusgangFragment fragment1 = new AusgangFragment();
-                    android.support.v4.app.FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
-                    ft1.replace(R.id.frameLayout,fragment1);
-                    ft1.commit();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frameLayout,fragment1)
+                            .commit();
                     return true;
                 case R.id.navigation_eingang:
                     setTitle("Baugeräte Eingang");
                     EingangFragment fragment2 = new EingangFragment();
-                    android.support.v4.app.FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
-                    ft2.replace(R.id.frameLayout,fragment2);
-                    ft2.commit();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.frameLayout,fragment2)
+                            .commit();
                     return true;
             }
             return false;
@@ -47,9 +53,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        if (savedInstanceState == null) {
+            ItemFragment firstFragment = new ItemFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.frameLayout, firstFragment);
+            ft.commit();
+        }
     }
 
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+        Toast.makeText(this,"Gerät angeklickt",Toast.LENGTH_LONG).show();
+    }
 }
