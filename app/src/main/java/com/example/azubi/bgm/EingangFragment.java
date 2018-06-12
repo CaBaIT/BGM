@@ -50,7 +50,6 @@ public class EingangFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 IntentIntegrator.forSupportFragment(EingangFragment.this)
-                        .setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES)
                         .initiateScan();
             }
 
