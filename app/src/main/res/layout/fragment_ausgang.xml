@@ -9,55 +9,61 @@
     android:paddingTop="5dp"
     android:layout_marginBottom="5dp">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_Polier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:ems="10"
+            android:hint="@string/polier"
+            android:inputType="textPersonName" />
 
-            <ImageView
-                android:id="@+id/iv_gerät"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="@string/testbild"
-                android:src="@drawable/ruettelplatte"
-                android:visibility="invisible"/>
+        <Spinner
+            android:id="@+id/spn_polier"
+            android:layout_width="match_parent"
+            android:layout_height="45dp" />
 
-            <TextView
-                android:id="@+id/tv_gerätename"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/geraetename"
-                android:visibility="invisible"/>
+        <EditText
+            android:id="@+id/et_Baustelle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/baustelle"
+            android:inputType="textPersonName"
+            android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt_scan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/geraet_scannen" />
+        <Button
+            android:id="@+id/bt_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/geraet_scannen" />
 
-            <EditText
-                android:id="@+id/et_Polier"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/bauleiter"
-                android:inputType="textPersonName" />
+        <ImageView
+            android:id="@+id/iv_gerät"
+            android:layout_width="match_parent"
+            android:layout_height="202dp"
+            android:contentDescription="@string/testbild"
+            android:src="@drawable/ruettelplatte"
+            android:visibility="invisible" />
 
-            <EditText
-                android:id="@+id/et_Baustelle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/baustelle"
-                android:inputType="textPersonName"
-                android:textAllCaps="false" />
+        <TextView
+            android:id="@+id/tv_gerätename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/geraetename"
+            android:visibility="invisible" />
 
-            <Button
-                android:id="@+id/bt_ausgang"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:baselineAligned="false"
-                android:text="@string/geraeteausgang_bestaetigen" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/bt_ausgang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:baselineAligned="false"
+            android:text="@string/geraeteausgang_bestaetigen" />
+
+    </LinearLayout>
     </ScrollView>

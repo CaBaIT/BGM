@@ -10,5 +10,6 @@
     <string name="geraeteausgang_bestaetigen">Geräteausgang bestätigen</string>
     <string name="testbild">testbild</string>
     <string name="bteingang">Geräteeingang bestätigen</string>
+    <string name="polier">Polier</string>
 
 </resources>
