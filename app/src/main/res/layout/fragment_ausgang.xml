@@ -14,18 +14,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_Polier"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/polier"
-            android:inputType="textPersonName" />
-
         <Spinner
             android:id="@+id/spn_polier"
             android:layout_width="match_parent"
-            android:layout_height="45dp" />
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/et_Baustelle"

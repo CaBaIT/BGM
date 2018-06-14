@@ -47,7 +47,6 @@ public class AusgangFragment extends Fragment {
     public static final String JSON_ARRAY = "result";
     private JSONArray result;
     private ArrayList<String> arrayList;
-    EditText et_polier;
     EditText et_Baustelle;
     ImageView iv_gerät;
     TextView tv_gerät;
@@ -58,7 +57,6 @@ public class AusgangFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ausgang, container, false);
         // Inflate the layout for this fragment
         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        et_polier =  ((EditText) view.findViewById(R.id.et_Polier));
         et_Baustelle =  ((EditText) view.findViewById(R.id.et_Baustelle));
         iv_gerät =  ((ImageView) view.findViewById(R.id.iv_gerät));
         tv_gerät =  ((TextView) view.findViewById(R.id.tv_gerätename));
@@ -72,24 +70,33 @@ public class AusgangFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+
         });
 
 
         bt_ausgang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(et_polier.getText().toString().isEmpty()||et_Baustelle.getText().toString().isEmpty()){
-                    Toast.makeText(getActivity(),"Angaben Fehlerhaft",Toast.LENGTH_LONG).show();
+                if(spn_polier.getSelectedItemPosition()==0){
+                    Toast.makeText(getActivity(),"Polier auswählen",Toast.LENGTH_LONG).show();
+
+                }else {
+                    if(et_Baustelle.getText().toString().isEmpty()){
+                        Toast.makeText(getActivity(),"Baustelle auswählen",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        builder.setMessage("Wollen Sie dieses Gerät wirklich herausgeben?").setPositiveButton("Ja", dialogClickListener)
+                                .setNegativeButton("Nein", dialogClickListener).show();
+                    }
+
                 }
-                else {
-                    builder.setMessage("Wollen Sie dieses Gerät wirklich herausgeben?").setPositiveButton("Ja", dialogClickListener)
-                            .setNegativeButton("Nein", dialogClickListener).show();
-                }
+
 
             }
 
@@ -113,7 +120,6 @@ public class AusgangFragment extends Fragment {
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
                     et_Baustelle.setText("");
-                    et_polier.setText("");
                     iv_gerät.setVisibility(View.INVISIBLE);
                     tv_gerät.setVisibility(View.INVISIBLE);
                     Toast.makeText(getActivity(),"Gerät erfolgreich herausgegeben",Toast.LENGTH_LONG).show();
